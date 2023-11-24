@@ -1,15 +1,15 @@
 const TelegramBot = require('node-telegram-bot-api');
-const token = '6939772670:AAEHrz2WA5SwnrxzKpUtkdDvCDEi6vR87zc';
+const token = process.env.TELEGRAM_TOKEN;
 
 const bot = new TelegramBot(token, {polling: true});
 
-const QUESTS = 8;
+const QUESTS = 9;
 let userStates = {};
 
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   userStates[chatId] = { questNumber: 1 };
-  bot.sendMessage(chatId, `🌟 Вітаємо, наш маленький грішник! Ласкаво просимо до пригоди, наче з кіно! 🌟
+  bot.sendMessage(chatId, `🌟 Вітаємоkjshkjfhsdkjfh, наш маленький грішник! Ласкаво просимо до пригоди, наче з кіно! 🌟
 
 🎉 Твої 34 – це не просто цифра, це твоя головна роль у пригоді, що нагадує сюжет відомого трилера! 🏙️🎬
 
@@ -39,27 +39,30 @@ bot.on('message', (msg) => {
 function handleQuest(chatId, questNumber, inputText) {
   switch (questNumber) {
     case 1:
-      startQuest(chatId, inputText);
+      start(chatId);
     break;
     case 2:
-      silverStart(chatId, inputText);
+      startQuest(chatId, inputText);
     break;
     case 3:
-      bookStore(chatId, inputText);
+      silverStart(chatId, inputText);
     break;
     case 4:
-      sexshop(chatId, inputText);
+      bookStore(chatId, inputText);
     break;
     case 5:
-      sexshop2(chatId, inputText);
+      sexshop(chatId, inputText);
     break;
     case 6:
-      drunkBerry(chatId, inputText);
+      sexshop2(chatId, inputText);
     break;
     case 7:
-      drunkBerry2(chatId, inputText);
+      drunkBerry(chatId, inputText);
     break;
     case 8:
+      drunkBerry2(chatId, inputText);
+    break;
+    case 9:
       final(chatId, inputText);
       break;
     default:
